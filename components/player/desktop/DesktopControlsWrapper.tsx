@@ -84,6 +84,7 @@ export function DesktopControlsWrapper({ src, state, logic, refs }: DesktopContr
             onToggleMute={toggleMute}
             onVolumeChange={handleVolumeChange}
             onVolumeMouseDown={handleVolumeMouseDown}
+            onToggleFullscreen={toggleFullscreen}
             onTogglePictureInPicture={togglePictureInPicture}
             onShowAirPlayMenu={showAirPlayMenu}
             onShowCastMenu={showCastMenu}
