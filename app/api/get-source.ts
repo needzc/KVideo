@@ -2,9 +2,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
+    // 加密校验
+    const { token } = req.query;
+    if (token !== "w6yHQSAUmt0eOvqlotiMGkYL91D185lU") {
+      return res.status(403).send("Forbidden");
+    }
   try {
     // 从环境变量获取隐藏的 JSON 内容
-    const secretData = process.env.SOURCES;
+    const secretData = process.env.MYSOURCES;
     
     if (!secretData) {
       return res.status(404).json({ error: "Source not found" });
