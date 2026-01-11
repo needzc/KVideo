@@ -4,11 +4,10 @@ import { NextResponse, NextRequest } from 'next/server';
 export const dynamic = 'force-dynamic'; 
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const token = searchParams.get('token');
-
-  if (token !== "w6yHQSAUmt0eOvqlotiMGkYL91D185lU") {
-    return new NextResponse("Forbidden", { status: 403 });
+  const referer = request.headers.get('referer');
+  // 只允许你自己的域名（例如 mkvideo.vercel.app）访问
+  if (!referer || !referer.includes("v.movie.us.kg")) {
+    return new NextResponse(JSON.stringify({ error: "Object not found" }, { status: 404 });
   }
 
   try {
